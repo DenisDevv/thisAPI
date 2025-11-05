@@ -91,7 +91,7 @@ router.get('/users', (req, res) => {
  */
 
 router.get('/users/:name', (req, res) => {
-    const usersPath = path.join(__dirname, '../../users.json');
+    const usersPath = path.join(__dirname, '../users.json');
     fs.readFile(usersPath, 'utf8', (err, data) => {
         if (err) {
             return res.status(500).json({ error: 'Impossibile leggere il file utenti.' });
@@ -152,7 +152,7 @@ router.post('/users', authMiddleware, (req, res) => {
     if (!user.hasOwnProperty("name") || !user.hasOwnProperty("age")) {
         return res.status(400).json({ error: 'Bad Request: name and age are required.' });
     }
-    const usersPath = path.join(__dirname, '../../users.json');
+    const usersPath = path.join(__dirname, '../users.json');
     fs.readFile(usersPath, 'utf8', (err, data) => {
         let users = [];
         if (!err) {
@@ -201,7 +201,7 @@ router.post('/users', authMiddleware, (req, res) => {
  *         description: Utente non trovato
  */
 router.delete('/users/:name', authMiddleware, (req, res) => {
-    const usersPath = path.join(__dirname, '../../users.json');
+    const usersPath = path.join(__dirname, '../users.json');
     fs.readFile(usersPath, 'utf8', (err, data) => {
         if (err) return res.status(500).json({ error: 'Impossibile leggere il file utenti.' });
         let users = [];
@@ -250,7 +250,7 @@ router.delete('/users/:name', authMiddleware, (req, res) => {
  *         description: Utente non trovato
  */
 router.put('/users/:name', authMiddleware, (req, res) => {
-    const usersPath = path.join(__dirname, '../../users.json');
+    const usersPath = path.join(__dirname, '../users.json');
     fs.readFile(usersPath, 'utf8', (err, data) => {
         if (err) return res.status(500).json({ error: 'Impossibile leggere il file utenti.' });
         let users = [];
