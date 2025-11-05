@@ -43,7 +43,7 @@ function authMiddleware(req, res, next) {
  */
 
 router.get('/users', (req, res) => {
-    const usersPath = path.join(__dirname, '../../users.json');
+    const usersPath = path.join(__dirname, '../users.json');
     fs.readFile(usersPath, 'utf8', (err, data) => {
         if (err) {
             return res.status(500).json({ error: 'Impossibile leggere il file utenti.' });
